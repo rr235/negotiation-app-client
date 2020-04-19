@@ -6,6 +6,6 @@ import InputForm from '../../atoms/inputForm';
 describe('Main', () => {
   it('should render correctly', () => {
     const component = shallow(<Main />);
-    expect(component.find(InputForm)).toHaveLength(1);
+    expect(component.find(InputForm)).toHaveLength(2);
   });
 });
