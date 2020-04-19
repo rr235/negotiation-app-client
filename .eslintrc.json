@@ -3,6 +3,8 @@
   "globals": {
     "describe": false,
     "it": false,
-    "expect": false
+    "expect": false,
+    "beforeAll": false,
+    "beforeEach": false
   }
 }
