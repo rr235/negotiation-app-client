@@ -18,7 +18,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
-    port: 9000,
+    port: process.env.PORT || 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({
