@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { arrayOf, node, string } from 'prop-types';
+import styles from './tabs.styles.scss';
 
 const Tabs = ({ children, id }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -9,19 +10,23 @@ const Tabs = ({ children, id }) => {
   return (
     <div>
       <div role="tablist">
-        {children.map((child, index) => (
-          <button
-            type="button"
-            role="tab"
-            id={`${id}-tab-${index}`}
-            aria-controls={`${id}-panel-${index}`}
-            aria-selected={activeIndex === index}
-            tabIndex={activeIndex === index ? 0 : -1}
-            onClick={() => onClick(index)}
-          >
-            {child.props.tabName}
-          </button>
-        ))}
+        {children.map((child, index) => {
+          const isActive = activeIndex === index;
+          return (
+            <button
+              type="button"
+              role="tab"
+              id={`${id}-tab-${index}`}
+              aria-controls={`${id}-panel-${index}`}
+              aria-selected={isActive}
+              tabIndex={isActive ? 0 : -1}
+              onClick={() => onClick(index)}
+              className={`${styles.tab} ${isActive ? styles.active : ''}`}
+            >
+              {child.props.tabName}
+            </button>
+          );
+        })}
       </div>
       {children.map((child, index) => (
         <div
@@ -30,6 +35,7 @@ const Tabs = ({ children, id }) => {
           aria-labelledby={`${id}-tab-${index}`}
           tabIndex={0}
           hidden={activeIndex !== index}
+          className={styles.tabPanel}
         >
           {child}
         </div>

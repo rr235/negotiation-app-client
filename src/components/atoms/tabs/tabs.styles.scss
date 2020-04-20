@@ -1,0 +1,32 @@
+$main-color: #ff8300;
+$secondary-color: #fff;
+$border-radius: 8px;
+
+.tab {
+  background-color: $secondary-color;
+  color: $main-color;
+  font-size: 0.75rem;
+  letter-spacing: 0.4px;
+  line-height: 1.45;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: $border-radius $border-radius 0 0;
+  padding: 0.8125rem 1.5rem;
+  cursor: pointer;
+  border: 1px solid $main-color;
+  border-bottom-width: 0;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  margin-right: 2px;
+
+  &.active {
+    background-color: $main-color;
+    color: $secondary-color;
+  }
+}
+
+.tabPanel {
+  padding: 1.5rem;
+  border: 1px solid $main-color;
+  border-radius: 0 $border-radius $border-radius;
+}
