@@ -9,9 +9,9 @@ const Main = () => (
       <InputForm
         label="Salary expected"
         id="expectedSalary"
-        tabName="Employee"
+        tabname="Employee"
       />
-      <InputForm label="Offered Salary" id="offeredSalary" tabName="Employer" />
+      <InputForm label="Offered Salary" id="offeredSalary" tabname="Employer" />
     </Tabs>
   </div>
 );

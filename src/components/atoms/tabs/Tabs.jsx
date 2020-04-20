@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { arrayOf, node, string } from 'prop-types';
 import styles from './tabs.styles.scss';
 
+/**
+ * Tabs component has tab list and tab panels.
+ * Tab list contains tabs. Active tab has aria-selected=true (a11y) and active class (styles).
+ * Tab Panel is controlled by tab (aria-controls=<panel-id>)
+ */
 const Tabs = ({ children, id }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -22,8 +27,9 @@ const Tabs = ({ children, id }) => {
               tabIndex={isActive ? 0 : -1}
               onClick={() => onClick(index)}
               className={`${styles.tab} ${isActive ? styles.active : ''}`}
+              key={child.props.tabname}
             >
-              {child.props.tabName}
+              {child.props.tabname}
             </button>
           );
         })}
@@ -36,6 +42,7 @@ const Tabs = ({ children, id }) => {
           tabIndex={0}
           hidden={activeIndex !== index}
           className={styles.tabPanel}
+          key={child.props.tabname}
         >
           {child}
         </div>
