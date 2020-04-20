@@ -1,0 +1,36 @@
+$main-color: #ff8300;
+$hover-color: #ff992e;
+$border-color: #d8d8d8;
+
+.button {
+  background-color: $main-color;
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.4px;
+  line-height: 1.45;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 0.8125rem 1.5rem;
+  margin: 0.3125rem 0.5rem 0.3125rem 0;
+  cursor: pointer;
+  border: 0;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  color: #fff;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+.input {
+  width: 100%;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  border: 1px solid $border-color;
+  background: #fff;
+  margin-top: 3px;
+  padding: 0 15px;
+  height: 43px;
+}

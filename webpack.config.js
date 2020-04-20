@@ -14,6 +14,23 @@ module.exports = {
         include: path.resolve(__dirname, 'src'),
         use: ['babel-loader'],
       },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                mode: 'local',
+                localIdentName: '[local]__[hash:base64:10]',
+              },
+            },
+          },
+          'sass-loader',
+        ],
+      },
     ],
   },
   devServer: {
