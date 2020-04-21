@@ -36,6 +36,12 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     port: process.env.PORT || 3000,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        pathRewrite: { '^/api': '' },
+      },
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
