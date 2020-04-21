@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import InputForm from '../../atoms/inputForm';
 import Tabs from '../../atoms/tabs';
+import Modal from '../../atoms/modal';
 import styles from './main.styles.scss';
 import { post } from '../../../helpers/http';
 
@@ -48,6 +49,10 @@ const Main = () => {
       .catch((error) => setResult(error));
   };
 
+  const closeHandler = () => {
+    setResult(null);
+  };
+
   return (
     <div className={styles.main}>
       <Tabs id="negotiationTab">
@@ -66,7 +71,7 @@ const Main = () => {
           isDisabled={disableEmployerInput}
         />
       </Tabs>
-      {result || <div>{result}</div>}
+      {result && <Modal onClose={closeHandler}>{result}</Modal>}
     </div>
   );
 };
