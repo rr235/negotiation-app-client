@@ -3,17 +3,31 @@ import InputForm from '../../atoms/inputForm';
 import Tabs from '../../atoms/tabs';
 import Modal from '../../atoms/modal';
 import styles from './main.styles.scss';
-import { post } from '../../../helpers/http';
+import { post, get } from '../../../helpers/http';
 
 const ENUM_SUCCESS = 'SUCCESS';
 const ENUM_FAILURE = 'FAILURE';
+const ENUM_PENDING = 'PENDING';
 
 const Main = () => {
   const [disableEmployeeInput, setDisableEmployeeInput] = useState(false);
   const [disableEmployerInput, setDisableEmployerInput] = useState(false);
   const [result, setResult] = useState();
+  const [weatherMessage, setWeatherMessage] = useState();
+
+  const getWeather = () => {
+    get('weather', { location: 'Berlin' }).then((res) => {
+      setWeatherMessage(
+        `Temperature in ${res.data.location} is ${res.data.temp} deg Celsius.`
+      );
+    });
+  };
 
   const resultHandler = (message) => {
+    if (message === ENUM_PENDING) {
+      return;
+    }
+
     if (message === ENUM_SUCCESS) {
       setResult('Success!');
     }
@@ -21,6 +35,8 @@ const Main = () => {
     if (message === ENUM_FAILURE) {
       setResult('Failure!');
     }
+
+    getWeather();
   };
 
   const employeeSubmitHandler = (value) => {
@@ -71,7 +87,12 @@ const Main = () => {
           isDisabled={disableEmployerInput}
         />
       </Tabs>
-      {result && <Modal onClose={closeHandler}>{result}</Modal>}
+      {result && (
+        <Modal onClose={closeHandler}>
+          <div className={styles.result}>{result}</div>
+          <div className={styles.info}>{weatherMessage}</div>
+        </Modal>
+      )}
     </div>
   );
 };
