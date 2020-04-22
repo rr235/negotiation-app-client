@@ -78,6 +78,7 @@ const Main = () => {
           tabname="Employee"
           onSubmit={employeeSubmitHandler}
           isDisabled={disableEmployeeInput}
+          className={styles.employeeSalary}
         />
         <InputForm
           label="Offered Salary"
@@ -85,6 +86,7 @@ const Main = () => {
           tabname="Employer"
           onSubmit={employerSubmitHandler}
           isDisabled={disableEmployerInput}
+          className={styles.employerSalary}
         />
       </Tabs>
       {result && (

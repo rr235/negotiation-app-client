@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { string, func, bool } from 'prop-types';
 import styles from './inputForm.styles.scss';
 
-const InputForm = ({ label, id, onClick, onSubmit, isDisabled }) => {
+const InputForm = ({ label, id, onClick, onSubmit, isDisabled, className }) => {
   const [input, setInput] = useState('');
 
   const onChangeHandler = (e) => {
@@ -15,7 +15,7 @@ const InputForm = ({ label, id, onClick, onSubmit, isDisabled }) => {
   };
 
   return (
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={onSubmitHandler} className={className}>
       <label htmlFor={id} className={styles.label}>
         {label}
       </label>

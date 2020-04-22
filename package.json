@@ -5,9 +5,11 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
+    "start:dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "test": "jest",
+    "test:unit": "jest --testPathPattern=test\\.jsx$",
+    "test:integration": "jest --testPathPattern=integration.test\\.jsx$",
     "lint": "eslint src/**/*.js*"
   },
   "author": "rahulr",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
